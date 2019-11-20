@@ -1,26 +1,24 @@
 package com.internship.accesa.fooddelivery.model;
 
-import java.sql.Timestamp;
-
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+
 @Data
 @Entity
-public class Order {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NotNull
-    private long id_user;
+    private String login_name;
 
     @NotNull
-    @ManyToOne
-    @JoinColumn(name="Restaurant_id")
-    private long id_restaurant;
+    private String email;
 
-    @NotNull
-    private Timestamp time;
 }
