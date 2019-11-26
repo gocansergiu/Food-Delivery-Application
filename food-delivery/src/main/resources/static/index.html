@@ -14,20 +14,14 @@
 <body>
 <h1>Food delivery</h1>
 
-<div class="container unauthenticated">
-    Login With Facebook: <a href="/login">click here</a>
-</div>
-<div class="container authenticated" style="display:none">
+<div class="container authenticated">
     Logged into Facebook as: <span id="user"></span>
 </div>
 </div>
 <script type="text/javascript">
-    $.get("/api/user", function(data) {
-        $("#user").html(data.userAuthentication.details.name);
-        $(".unauthenticated").hide()
-        $(".authenticated").show()
+    $.get("/api/user/me", function(data) {
+        $("#user").html(data.firstName);
     });
-
 </script>
 </body>
 </html>

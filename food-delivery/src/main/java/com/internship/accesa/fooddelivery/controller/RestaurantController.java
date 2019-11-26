@@ -1,11 +1,11 @@
 package com.internship.accesa.fooddelivery.controller;
 
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -14,9 +14,9 @@ public class RestaurantController {
 
 
     @GetMapping("/restaurants")
-    @PreAuthorize("hasRole('USER')")
+    @Secured({"ROLE_USER"})
     public List<String> getAllRestaurants(){
         //DUMMY get all restaurants controller
-        return new ArrayList<>();
+        return Arrays.asList("One restaurant", "Another restaurant");
     }
 }

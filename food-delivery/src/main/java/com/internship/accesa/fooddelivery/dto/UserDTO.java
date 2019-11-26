@@ -1,5 +1,6 @@
 package com.internship.accesa.fooddelivery.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.internship.accesa.fooddelivery.model.AuthProvider;
 
 public class UserDTO {
@@ -14,6 +15,7 @@ public class UserDTO {
 
     private Boolean emailVerified = false;
 
+    @JsonIgnore
     private String password;
 
     private AuthProvider provider;

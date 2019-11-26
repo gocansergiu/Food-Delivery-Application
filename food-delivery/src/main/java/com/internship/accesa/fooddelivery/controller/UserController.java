@@ -1,12 +1,12 @@
 package com.internship.accesa.fooddelivery.controller;
 
 import com.internship.accesa.fooddelivery.dto.UserDTO;
-import com.internship.accesa.fooddelivery.model.AuthProvider;
 import com.internship.accesa.fooddelivery.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.naming.AuthenticationException;
 import java.security.Principal;
 import java.util.Optional;
 
@@ -20,21 +20,11 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/user")
-    public Principal getUser(Principal user) {
-        //DUMMY code - just to inserts a dummy user
-        String email = "blabla@gmail.com";
+    @GetMapping("/user/me")
+    public UserDTO getUser(Principal user) throws AuthenticationException {
 
-        Optional<UserDTO> userDTO = userService.findByEmail(email);
-        if (!userDTO.isPresent()) {
-            UserDTO newUserDTO = new UserDTO()
-                    .email("blabla@gmail.com")
-                    .firstName("bla")
-                    .lastName("bla")
-                    .provider(AuthProvider.local);
+        Optional<UserDTO> userDTO = userService.findByEmail(user.getName());
 
-            userService.save(newUserDTO);
-        }
-        return user;
+        return userDTO.orElseThrow(AuthenticationException::new);
     }
 }
