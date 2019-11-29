@@ -23,7 +23,7 @@ public class User {
     private String lastName;
 
     @Email
-    @Column(nullable = false, unique = true)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     @Column(name = "email_verified", nullable = false)

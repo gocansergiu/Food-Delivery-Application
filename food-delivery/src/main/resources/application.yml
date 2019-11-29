@@ -8,7 +8,7 @@ server:
     require-ssl: true
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/food_delivery?useSSL=false
+    url: jdbc:postgresql://localhost:5432/food_delivery
     username: postgres
     password: admin
     driver-class-name: org.postgresql.Driver
@@ -26,7 +26,7 @@ spring:
           facebook:
             client-id: 571324953410235
             client-secret: 62cbb3cba93a913cd9ca0d4b09555b9a
-            redirect-uri: "{baseUrl}/login/oauth2/code/"
+            redirect-uri: "https://localhost:8443/login/oauth2/code/"
             scope:
               - email
               - public_profile
