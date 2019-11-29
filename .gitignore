@@ -1,6 +1,8 @@
 # Default ignored files
 /workspace.xml
 .idea/
-/target/
+/food-delivery/target/
+/food-delivery-auth-server/target/
+/food-delivery-resource-server/target/
 .mvn/
 *.iml
