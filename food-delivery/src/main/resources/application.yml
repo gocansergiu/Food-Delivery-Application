@@ -4,7 +4,7 @@ server:
     key-store-type: PKCS12
     key-store: classpath:keystore/testKeystore.p12
     key-store-password: changeit
-    key-alias: food-delivery
+    key-alias: localhost
     require-ssl: true
 spring:
   datasource:
