@@ -42,4 +42,7 @@ spring:
             token-uri: https://graph.facebook.com/v3.0/oauth/access_token
             authorization-uri: https://www.facebook.com/v3.0/dialog/oauth
             user-info-uri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified
-            user-name-attribute: name
+            user-name-attribute: email
+logging:
+  level:
+    org.springframework.security: DEBUG

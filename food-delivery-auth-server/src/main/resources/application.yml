@@ -1,0 +1,43 @@
+server:
+  port: 8081
+  ssl:
+    key-store-type: PKCS12
+    key-store: classpath:keystore/testKeystore.p12
+    key-store-password: changeit
+    key-alias: localhost
+    require-ssl: true
+  servlet:
+    context-path: /auth
+user:
+  oauth:
+    clientId: R2dpxQ3vPrtfgF72
+    clientSecret: fDw7Mpkk5czHNuSRtmhGmAGL42CaxQB9
+    redirectUris: https://localhost:8082/login/oauth2/code/
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/food_delivery
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: fooddeliveryinternship@gmail.com
+    password: Dummy1234*
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+logging:
+  level:
+    org.springframework.security: DEBUG

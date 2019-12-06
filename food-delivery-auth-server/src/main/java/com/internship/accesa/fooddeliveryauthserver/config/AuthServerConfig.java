@@ -1,4 +1,4 @@
-package com.internship.accesa.fooddeliveryauthserver;
+package com.internship.accesa.fooddeliveryauthserver.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
