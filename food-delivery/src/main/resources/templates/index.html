@@ -12,12 +12,15 @@
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
+
 <h1>Food delivery</h1>
 
 <div class="container authenticated">
     Logged into Facebook as: <span id="user"></span>
 </div>
-</div>
+
+<p>If you are not registrated, register <a href="/registration">here</a></p>
+
 <script type="text/javascript">
     $.get("/api/user/me", function(data) {
         $("#user").html(data.firstName);
