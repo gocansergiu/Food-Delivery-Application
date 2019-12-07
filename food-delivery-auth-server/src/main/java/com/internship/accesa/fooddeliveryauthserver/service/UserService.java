@@ -31,7 +31,7 @@ public class UserService {
 
     @Transactional
     public Optional<UserDTO> findByConfirmationToken(String confirmationToken){
-        return userRepository.findOneByConfirmationToken(confirmationToken).map(userMapper::toDto);
+        return userRepository.findOneByConfirmationTokenAndEmailVerified(confirmationToken, false).map(userMapper::toDto);
 
     }
 

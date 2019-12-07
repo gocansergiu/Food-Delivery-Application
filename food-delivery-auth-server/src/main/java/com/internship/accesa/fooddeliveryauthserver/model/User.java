@@ -1,7 +1,5 @@
 package com.internship.accesa.fooddeliveryauthserver.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -36,7 +34,7 @@ public class User {
     private AuthProvider provider;
 
     @NotNull
-    @Column(name = "confirmation_token")
+    @Column(name = "confirmation_token", unique = true)
     private String confirmationToken;
 
     public Long getId() {

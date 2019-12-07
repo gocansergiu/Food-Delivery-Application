@@ -110,7 +110,7 @@ public class RegisterController {
 			userService.save(userDTO);
 			modelAndView.addObject("successMessage", "Your password has been set!");
 		}else {
-			modelAndView.addObject("errorMessage", "Your password has been set! ");
+			modelAndView.addObject("errorMessage", "Your password could not set! Token invalid or consumed! ");
 		}
 
 		modelAndView.setViewName("confirm");
