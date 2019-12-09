@@ -33,10 +33,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private AuthProvider provider;
 
-    @NotNull
-    @Column(name = "confirmation_token", unique = true)
-    private String confirmationToken;
-
     public Long getId() {
         return id;
     }
@@ -93,11 +89,4 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getConfirmationToken() {
-        return confirmationToken;
-    }
-
-    public void setConfirmationToken(String confirmationToken) {
-        this.confirmationToken = confirmationToken;
-    }
 }

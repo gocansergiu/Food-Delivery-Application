@@ -5,6 +5,7 @@ import com.internship.accesa.fooddeliveryauthserver.mapper.UserMapper;
 import com.internship.accesa.fooddeliveryauthserver.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.thymeleaf.util.StringUtils;
 
 import java.util.Optional;
 
@@ -30,9 +31,12 @@ public class UserService {
     }
 
     @Transactional
-    public Optional<UserDTO> findByConfirmationToken(String confirmationToken){
-        return userRepository.findOneByConfirmationTokenAndEmailVerified(confirmationToken, false).map(userMapper::toDto);
-
+    public Optional<UserDTO> findByIdWithEmailNotVerified(String id){
+        if(StringUtils.isEmpty(id)){
+            return Optional.empty();
+        }else{
+            return userRepository.findOneByIdAndEmailVerified(Long.valueOf(id), false).map(userMapper::toDto);
+        }
     }
 
 }

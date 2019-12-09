@@ -20,9 +20,6 @@ public class UserDTO {
 
     private AuthProvider provider;
 
-    @JsonIgnore
-    private String confirmationToken;
-
     public Long getId() {
         return id;
     }
@@ -112,11 +109,4 @@ public class UserDTO {
         this.provider = provider;
     }
 
-    public String getConfirmationToken() {
-        return confirmationToken;
-    }
-
-    public void setConfirmationToken(String confirmationToken) {
-        this.confirmationToken = confirmationToken;
-    }
 }

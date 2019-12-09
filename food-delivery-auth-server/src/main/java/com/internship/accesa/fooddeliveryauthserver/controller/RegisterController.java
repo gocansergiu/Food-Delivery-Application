@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
 
 @Controller
 public class RegisterController {
@@ -54,9 +53,6 @@ public class RegisterController {
 			bindingResult.reject("email");
 		} else { // new user so we create user and send confirmation e-mail
 
-			// Generate random 36-character string token for confirmation link
-			user.setConfirmationToken(UUID.randomUUID().toString());
-
 			user.setProvider(AuthProvider.local);
 
 			user = userService.save(user);
@@ -68,7 +64,7 @@ public class RegisterController {
 			registrationEmail.setTo(user.getEmail());
 			registrationEmail.setSubject("Registration Confirmation");
 			registrationEmail.setText("To confirm your e-mail address, please click the link below:\n"
-					+ appUrl + "/confirm?token=" + user.getConfirmationToken());
+					+ appUrl + "/confirm?token=" + user.getId());
 
 			emailService.sendEmail(registrationEmail);
 
@@ -84,12 +80,12 @@ public class RegisterController {
 	@RequestMapping(value="/confirm", method = RequestMethod.GET)
 	public ModelAndView confirmRegistration(ModelAndView modelAndView, @RequestParam("token") String token) {
 
-		Optional<UserDTO> user = userService.findByConfirmationToken(token);
+		Optional<UserDTO> user = userService.findByIdWithEmailNotVerified(token);
 
 		if (!user.isPresent()) { // No token found in DB
 			modelAndView.addObject("invalidToken", "Oops!  This is an invalid confirmation link.");
 		} else { // Token found
-			modelAndView.addObject("token", user.get().getConfirmationToken());
+			modelAndView.addObject("token", user.get().getId());
 		}
 		return modelAndView;
 	}
@@ -99,7 +95,7 @@ public class RegisterController {
 	public ModelAndView confirmRegistration(ModelAndView modelAndView, @RequestParam Map<String, String> requestParams) {
 
 		// Find the user associated with the reset token
-		Optional<UserDTO> optionalUserDTO = userService.findByConfirmationToken(requestParams.get("token"));
+		Optional<UserDTO> optionalUserDTO = userService.findByIdWithEmailNotVerified(requestParams.get("token"));
 
 		if(optionalUserDTO.isPresent()){
 			UserDTO userDTO = optionalUserDTO.get();
