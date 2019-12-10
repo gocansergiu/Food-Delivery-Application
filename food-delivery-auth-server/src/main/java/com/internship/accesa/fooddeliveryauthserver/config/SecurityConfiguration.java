@@ -31,7 +31,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js",
                         "/login",
-                        "/oauth/authorize")
+                        "/oauth/authorize",
+                        "/auth/login")
                 .and()
                 .authorizeRequests()
                     .antMatchers("/register",
