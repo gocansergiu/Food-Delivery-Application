@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,18 +18,26 @@ import java.util.Map;
 import java.util.Optional;
 
 @Controller
-public class RegisterController {
+public class AuthController {
 	
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	private UserService userService;
 	private EmailService emailService;
 	
 	@Autowired
-	public RegisterController(BCryptPasswordEncoder bCryptPasswordEncoder,
-                              UserService userService, EmailService emailService) {
+	public AuthController(BCryptPasswordEncoder bCryptPasswordEncoder,
+						  UserService userService, EmailService emailService) {
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 		this.userService = userService;
 		this.emailService = emailService;
+	}
+
+
+	// Return registration form template
+	@RequestMapping(value="/login", method = RequestMethod.GET)
+	public ModelAndView showLoginPage(ModelAndView modelAndView){
+		modelAndView.setViewName("login");
+		return modelAndView;
 	}
 	
 	// Return registration form template
@@ -43,14 +50,13 @@ public class RegisterController {
 	
 	// Process form input data
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public ModelAndView processRegistrationForm(ModelAndView modelAndView, @Valid UserDTO user, BindingResult bindingResult, HttpServletRequest request) {
+	public ModelAndView processRegistrationForm(ModelAndView modelAndView, @Valid UserDTO user, HttpServletRequest request) {
 				
 		// Lookup user in database by e-mail
 		Optional<UserDTO> userExists = userService.findByEmail(user.getEmail());
 		
 		if (userExists.isPresent()) {
 			modelAndView.addObject("alreadyRegisteredMessage", "Oops!  There is already a user registered with the email provided.");
-			bindingResult.reject("email");
 		} else { // new user so we create user and send confirmation e-mail
 
 			user.setProvider(AuthProvider.local);

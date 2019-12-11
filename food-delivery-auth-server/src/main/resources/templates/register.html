@@ -44,18 +44,6 @@
           class="alert alert-danger" role="alert"
           th:text="${alreadyRegisteredMessage}"></div>
 
-        <div th:if="${invalidPassword}"
-             class="alert alert-danger" role="alert"
-             th:text="${invalidPassword}"></div>
-
-        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
-          class="validation-message alert alert-danger" role="alert"></div>
-
-        <div th:if="${#fields.hasErrors('password')}"
-          th:errors="*{password}"
-          class="validation-message alert alert-danger" role="alert"></div>
-
-
         <div class="form-group input-group has-feedback">
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-user"></span>
