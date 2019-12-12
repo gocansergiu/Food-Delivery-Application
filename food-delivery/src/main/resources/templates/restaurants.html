@@ -12,11 +12,21 @@
 <body>
 <div class="container">
     <p>
-    <h3>Binding a List in Thymeleaf - Example</h3>
+    <h3>Restraurants</h3>
     </p>
 </div>
 <div class="container">
     <a class="btn btn-info" href="#" th:href="@{/restaurants}"> Restaurants</a>
+    <th:foreach th:each="restaurant: ${restaurants}">
+    <div class="card" style="width: 18rem;">
+        <img src="restaurant_template.jpg" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title" >  <span th:text="'Restaurant: ' + ${restaurant.getRestaurantName()}"></span></h5>
+            <p class="card-text">Restaurant Description not yet in database...</p>
+            <a href="#" class="btn btn-primary">Go to Restaurant Dishes</a>
+        </div>
+    </div>
+    </th:foreach>
 </div>
 </body>
 </html>
