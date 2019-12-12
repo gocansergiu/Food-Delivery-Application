@@ -1,18 +1,17 @@
 package com.internship.accesa.fooddelivery.model;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+@Entity(name = "restaurant")
 public class Restaurant {
 
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator")
+    private Long id;
 
     @NotNull
-    private Dish dish;
+    @Column(name = "restaurant_name")
+    private String restaurantName;
 
 }

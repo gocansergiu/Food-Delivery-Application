@@ -20,6 +20,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   security:
+    trust-all-certificates: true
     oauth2:
       client:
         registration:

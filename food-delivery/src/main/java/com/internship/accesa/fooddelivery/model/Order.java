@@ -1,26 +1,27 @@
 package com.internship.accesa.fooddelivery.model;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-@Data
-@Entity
+@Entity(name = "orders")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+    @SequenceGenerator(name = "sequenceGenerator")
+    private Long id;
 
     @NotNull
-    private long id_user;
+    @Column(name = "id_user")
+    private Long idUser;
+
+    @Column(name= "creation_date")
+    private Timestamp creationDate;
 
     @NotNull
-//    @ManyToOne
-    @JoinColumn(name="Restaurant_id")
-    private long id_restaurant;
-
-    @NotNull
-    private Timestamp time;
+    @Column(name= "id_restaurant")
+    private Long idRestaurant;
 }
