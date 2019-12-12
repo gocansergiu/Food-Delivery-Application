@@ -1,18 +1,23 @@
 package com.internship.accesa.fooddelivery.model;
 
+import lombok.Data;
+
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+@Data
+@Entity(name="restaurant")
 public class Restaurant {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotNull
-    private Dish dish;
+    private String name;
+ /*   @NotNull
+    private Dish dish;*/
 
 }

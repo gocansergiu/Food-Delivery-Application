@@ -13,10 +13,16 @@
 </head>
 <body>
 
-<h1>Welcome on our food delivery application</h1>
+<h1>Food delivery</h1>
 
-<p>Login with facebook here <a href="/login">Log-in</a></p>
-<p>If you are not registrated, register <a href="https://localhost:8081/auth/register">here</a></p>
+<div class="container authenticated">
+    Logged into Facebook as: <span id="user"></span>
+</div>
 
+<script type="text/javascript">
+    $.get("/api/user/me", function(data) {
+        $("#user").html(data.firstName);
+    });
+</script>
 </body>
 </html>

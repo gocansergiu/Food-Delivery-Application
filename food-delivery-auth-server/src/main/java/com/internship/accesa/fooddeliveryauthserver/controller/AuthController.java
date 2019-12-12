@@ -92,6 +92,7 @@ public class AuthController {
 			modelAndView.addObject("invalidToken", "Oops!  This is an invalid confirmation link.");
 		} else { // Token found
 			modelAndView.addObject("token", user.get().getId());
+
 		}
 		return modelAndView;
 	}
@@ -115,7 +116,7 @@ public class AuthController {
 			modelAndView.addObject("errorMessage", "Your password could not set! Token invalid or consumed! ");
 		}
 
-		modelAndView.setViewName("confirm");
+		modelAndView.setViewName("https://localhost:8443/login/oauth2/code");
 
 		return modelAndView;
 	}

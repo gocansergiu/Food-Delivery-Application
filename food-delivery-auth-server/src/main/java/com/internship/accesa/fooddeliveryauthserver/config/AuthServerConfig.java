@@ -19,14 +19,17 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     @Value("${user.oauth.redirectUris}")
     private String RedirectURLs;
     private final PasswordEncoder passwordEncoder;
+
     public AuthServerConfig(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
+
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) {
         oauthServer.tokenKeyAccess("permitAll()")
                 .checkTokenAccess("isAuthenticated()");
     }
+
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
@@ -37,4 +40,5 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
                 .autoApprove(true)
                 .redirectUris(RedirectURLs);
     }
+
 }

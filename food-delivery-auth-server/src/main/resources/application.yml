@@ -12,7 +12,7 @@ user:
   oauth:
     clientId: R2dpxQ3vPrtfgF72
     clientSecret: fDw7Mpkk5czHNuSRtmhGmAGL42CaxQB9
-    redirectUris: https://localhost:8082/login/oauth2/code/
+    redirectUris: https://localhost:8443/login/oauth2/code/
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/food_delivery
