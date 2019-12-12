@@ -1,0 +1,39 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="20191121000006" author="marius.butaciu" >
+        <createTable tableName="order_dishes">
+            <column name="id_order" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="id_dish" type="bigint">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="id_order"
+                                 baseTableName="order_dishes"
+                                 baseTableSchemaName="public"
+                                 constraintName="fk_order_dishes_order"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="orders"
+                                 referencedTableSchemaName="public"/>
+        <addForeignKeyConstraint baseColumnNames="id_dish"
+                                 baseTableName="order_dishes"
+                                 baseTableSchemaName="public"
+                                 constraintName="fk_order_dishes_dish"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dishes"
+                                 referencedTableSchemaName="public"/>
+
+    </changeSet>
+</databaseChangeLog>
