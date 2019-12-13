@@ -8,6 +8,7 @@
     <meta name="author" content="">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link th:href="@{restaurants.css}" rel="stylesheet"/>
 </head>
 <body>
 <div class="container">
@@ -15,18 +16,19 @@
     <h3>Restraurants</h3>
     </p>
 </div>
-<div class="container">
-    <a class="btn btn-info" href="#" th:href="@{/restaurants}"> Restaurants</a>
-    <th:foreach th:each="restaurant: ${restaurants}">
-    <div class="card" style="width: 18rem;">
-        <img src="restaurant_template.jpg" class="card-img-top">
+<div class="container d-flex justify-content-center">
+<!--    <a class="btn btn-info" href="#" th:href="@{/restaurants}"> Restaurants</a>-->
+    <div class="card-container">
+    <div class="card" style="width: 18rem;" th:each="restaurant: ${restaurants}">
+        <img src="https://discovermandarina.com/wp-content/uploads/2018/01/CuisineHero.png" class="card-img-top">
         <div class="card-body">
             <h5 class="card-title" >  <span th:text="'Restaurant: ' + ${restaurant.getRestaurantName()}"></span></h5>
             <p class="card-text">Restaurant Description not yet in database...</p>
             <a href="#" class="btn btn-primary">Go to Restaurant Dishes</a>
         </div>
     </div>
-    </th:foreach>
+
+    </div>
 </div>
 </body>
 </html>
