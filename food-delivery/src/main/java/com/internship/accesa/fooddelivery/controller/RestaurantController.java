@@ -25,9 +25,9 @@ public class RestaurantController {
     }
 
     @GetMapping("/all")
-    public String showAll(Model model) {
+    public List<Restaurant> showAll(Model model) {
         model.addAttribute("restaurant", repository.findAll());
-        return "restaurants";
+        return repository.findAll();
     }
 
     @GetMapping("/restaurants")
