@@ -19,7 +19,8 @@ public class IndexController {
         return "contact";
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value ={ "","/index"}, method = RequestMethod.GET)
+
     public ModelAndView index() {
 
         ModelAndView modelAndView = new ModelAndView();
