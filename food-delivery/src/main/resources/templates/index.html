@@ -16,10 +16,8 @@
 <h1>Food delivery</h1>
 
 <div class="container authenticated">
-    Logged into Facebook as: <span id="user"></span>
+    Logged into Food-Delivery as: <span id="user"></span>
 </div>
-
-<p>If you are not registrated, register <a href="/registration">here</a></p>
 
 <script type="text/javascript">
     $.get("/api/user/me", function(data) {

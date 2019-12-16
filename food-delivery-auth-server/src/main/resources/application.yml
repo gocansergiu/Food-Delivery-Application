@@ -12,7 +12,9 @@ user:
   oauth:
     clientId: R2dpxQ3vPrtfgF72
     clientSecret: fDw7Mpkk5czHNuSRtmhGmAGL42CaxQB9
-    redirectUris: https://localhost:8082/login/oauth2/code/
+    redirectUris: https://localhost:8082/login/oauth2/code, https://localhost:8443/login/oauth2/code
+    scope: read,write
+    auto-approve-scopes: '.*'
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/food_delivery
@@ -38,6 +40,35 @@ spring:
           auth: true
           starttls:
             enable: true
+
+facebook:
+  client:
+    clientId: 578191556266322
+    clientSecret: e4631a34c631701866d7315281bc2b3d
+    accessTokenUri: https://graph.facebook.com/oauth/access_token
+    userAuthorizationUri: https://www.facebook.com/dialog/oauth
+    tokenName: oauth_token
+    authenticationScheme: query
+    clientAuthenticationScheme: form
+    scope:
+      - email
+      - public_profile
+  resource:
+    userInfoUri: https://graph.facebook.com/me?fields=id,first_name,middle_name,last_name,name,email
+
+github:
+  client:
+    clientId: e4ff4ffdb6e474e87a9e
+    clientSecret: a1c1fd5090ffae2584c29f2abeb4e04ca2a27c95
+    accessTokenUri: https://github.com/login/oauth/access_token
+    userAuthorizationUri: https://github.com/login/oauth/authorize
+    clientAuthenticationScheme: form
+    scope:
+      - user
+  resource:
+    userInfoUri: https://api.github.com/user
+
+
 logging:
   level:
     org.springframework.security: DEBUG
