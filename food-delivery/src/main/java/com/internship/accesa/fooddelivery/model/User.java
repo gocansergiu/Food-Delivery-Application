@@ -1,7 +1,5 @@
 package com.internship.accesa.fooddelivery.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -26,16 +24,6 @@ public class User {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "email_verified", nullable = false)
-    private Boolean emailVerified = false;
-
-    @JsonIgnore
-    private String password;
-
-    //@NotNull
-    @Enumerated(EnumType.STRING)
-    private AuthProvider provider;
-
     public Long getId() {
         return id;
     }
@@ -58,30 +46,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Boolean getEmailVerified() {
-        return emailVerified;
-    }
-
-    public void setEmailVerified(Boolean emailVerified) {
-        this.emailVerified = emailVerified;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public AuthProvider getProvider() {
-        return provider;
-    }
-
-    public void setProvider(AuthProvider provider) {
-        this.provider = provider;
     }
 
     public String getLastName() {
