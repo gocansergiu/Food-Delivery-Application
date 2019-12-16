@@ -37,18 +37,7 @@ public class RestaurantController {
     ModelAndView modelAndView = new ModelAndView();
     modelAndView.addObject("restaurants",arrayList);
     return modelAndView;}
- /*   @GetMapping("/restaurants")
-    @Secured({"ROLE_USER"})
-    public List<Restaurant> getAllRestaurants(){
-        //DUMMY get all restaurants controller
-       // return Arrays.asList("One restaurant", "Another restaurant");
-  //      ModelAndView modelAndView = new ModelAndView();
 
-     return repository.findAll();
-
-
-    }
-*/
     @GetMapping("/restaurants/find/{decisionId}")
     public Optional<Restaurant> findone(@PathVariable @NotNull @DecimalMin("0") Long decisionId ){
             return repository.findById(decisionId);

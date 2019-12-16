@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" lang="en">
 <head>
-    <title>Binding a List in Thymeleaf</title>
+    <title>Dishes</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -81,20 +81,20 @@ li.dropdown {
 </ul>
 <div class="container">
     <p>
-    <h3>Restraurants</h3>
+    <h3>Dishes</h3>
     </p>
 </div>
 <div class="container d-flex justify-content-center">
-<!--    <a class="btn btn-info" href="#" th:href="@{/restaurants}"> Restaurants</a>-->
+    <!--    <a class="btn btn-info" href="#" th:href="@{/restaurants}"> Restaurants</a>-->
     <div class="card-container">
-    <div class="card" style="width: 18rem;" th:each="restaurant: ${restaurants}">
-        <img th:src="${restaurant.getPhotoLink()}" class="card-img-top">
-        <div class="card-body">
-            <h5 class="card-title" >  <span th:text="'Restaurant: ' + ${restaurant.getRestaurantName()}"></span></h5>
-            <p class="card-text"> <span th:text="'Restaurant: ' + ${restaurant.getDescription()}"></span></p>
-            <a href="#" class="btn btn-primary">Go to Restaurant Dishes</a>
+        <div class="card" style="width: 18rem;" th:each="dish: ${Dishes}">
+
+            <div class="card-body">
+                <h5 class="card-title" >  <span th:text="'Dish: ' + ${dish.getName()}"></span></h5>
+                <p class="card-text"> <span th:text="'Descirption ' + ${dish.getDescription()}"></span></p>
+                <a href="#" class="btn btn-primary">Order</a>
+            </div>
         </div>
-    </div>
 
     </div>
 </div>

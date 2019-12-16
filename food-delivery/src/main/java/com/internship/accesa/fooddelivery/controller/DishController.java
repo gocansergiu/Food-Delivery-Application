@@ -26,12 +26,13 @@ public class DishController {
         this.restaurantRepository = restaurantRepository;
     }
 
-    @GetMapping("/dishes")
+    @GetMapping("{decisionId}/dishes/")
     @Secured({"ROLE_USER"})
-    public ModelAndView getAllRestaurants(){
-        List<Dish> arrayList = repository.findAll();
+    public ModelAndView getdisheswithRestaurantID(@PathVariable @NotNull @DecimalMin("0") Long decisionId){
+        List<Dish> arrayList = repository.findByidRestaurant(decisionId);
+// eror with find by id restaurant
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("dishes",arrayList);
+        modelAndView.addObject("Dishes",arrayList);
         return modelAndView;}
 
 
