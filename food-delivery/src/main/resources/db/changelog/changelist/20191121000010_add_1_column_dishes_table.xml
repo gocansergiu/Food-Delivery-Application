@@ -1,0 +1,23 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="20191121000010" author="marius.butaciu" >
+        <addColumn  schemaName="public"
+                    tableName="dishes">
+            <column name="id_restaurant" type="bigint"/>
+        </addColumn>
+        <addForeignKeyConstraint baseColumnNames="id_restaurant"
+                                 baseTableName="dishes"
+                                 baseTableSchemaName="public"
+                                 constraintName="fk_dish_restaurant"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="restaurant"
+                                 referencedTableSchemaName="public"/>
+    </changeSet>
+</databaseChangeLog>

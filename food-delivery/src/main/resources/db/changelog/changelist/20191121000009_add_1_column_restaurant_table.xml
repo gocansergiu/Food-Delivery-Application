@@ -1,0 +1,12 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="20191121000009" author="marius.butaciu" >
+        <addColumn  schemaName="public"
+                    tableName="restaurant">
+            <column name="photo_link" type="text"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>
