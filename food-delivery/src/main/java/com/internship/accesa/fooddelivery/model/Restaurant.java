@@ -5,7 +5,6 @@ import javax.validation.constraints.NotNull;
 @Entity(name = "restaurant")
 public class Restaurant {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
@@ -14,6 +13,13 @@ public class Restaurant {
     @NotNull
     @Column(name = "restaurant_name")
     private String restaurantName;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "photo_link")
+    private String photoLink;
+
 
     public Long getId() {
         return id;
@@ -31,11 +37,19 @@ public class Restaurant {
         this.restaurantName = restaurantName;
     }
 
-    @Override
-    public String toString() {
-        return "Restaurant{" +
-                "id=" + id +
-                ", restaurantName='" + restaurantName + '\'' +
-                '}';
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getPhotoLink() {
+        return photoLink;
+    }
+
+    public void setPhotoLink(String photoLink) {
+        this.photoLink = photoLink;
     }
 }

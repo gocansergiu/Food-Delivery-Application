@@ -88,7 +88,7 @@ li.dropdown {
 <!--    <a class="btn btn-info" href="#" th:href="@{/restaurants}"> Restaurants</a>-->
     <div class="card-container">
     <div class="card" style="width: 18rem;" th:each="restaurant: ${restaurants}">
-        <img src="https://discovermandarina.com/wp-content/uploads/2018/01/CuisineHero.png" class="card-img-top">
+        <img src="${restaurant.getPhotoLink()}" class="card-img-top">
         <div class="card-body">
             <h5 class="card-title" >  <span th:text="'Restaurant: ' + ${restaurant.getRestaurantName()}"></span></h5>
             <p class="card-text">Restaurant Description not yet in database...</p>
