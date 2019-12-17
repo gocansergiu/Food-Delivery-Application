@@ -92,7 +92,7 @@ li.dropdown {
         <div class="card-body">
             <h5 class="card-title" >  <span th:text="'Restaurant: ' + ${restaurant.getRestaurantName()}"></span></h5>
             <p class="card-text"> <span th:text="${restaurant.getDescription()}"></span></p>
-            <a href="#" class="btn btn-primary">Go to Restaurant Dishes</a>
+            <a th:href="'/dishes?decisionId=' + ${restaurant.getId()}" class="btn btn-primary">Go to Restaurant Dishes</a>
         </div>
     </div>
 

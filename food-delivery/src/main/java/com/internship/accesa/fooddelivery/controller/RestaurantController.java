@@ -24,11 +24,11 @@ public class RestaurantController {
         this.repository = repository;
     }
 
-    @GetMapping("/all")
+    /*@GetMapping("/all")
     public List<Restaurant> showAll(Model model) {
         model.addAttribute("restaurant", repository.findAll());
         return repository.findAll();
-    }
+    }*/
 
     @GetMapping("/restaurants")
     @Secured({"ROLE_USER"})
