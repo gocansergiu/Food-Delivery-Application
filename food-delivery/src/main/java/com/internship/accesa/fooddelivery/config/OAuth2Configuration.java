@@ -17,7 +17,10 @@ public class OAuth2Configuration extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .oauth2Login();
+                .oauth2Login()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/");
     }
 
 }
