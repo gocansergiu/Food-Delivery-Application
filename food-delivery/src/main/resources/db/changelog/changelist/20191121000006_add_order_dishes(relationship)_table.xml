@@ -4,11 +4,6 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <changeSet id="20191121000006" author="marius.butaciu" >
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <tableExists tableName="order_dishes" schemaName="public"/>
-            </not>
-        </preConditions>
         <createTable tableName="order_dishes">
             <column name="id_order" type="bigint">
                 <constraints nullable="false" />

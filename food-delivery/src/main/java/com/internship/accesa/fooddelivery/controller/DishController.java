@@ -19,20 +19,28 @@ import java.util.Optional;
 public class DishController {
 
     private DishRepository repository;
-    private RestaurantRepository restaurantRepository;
+   // private RestaurantRepository restaurantRepository;
 
-    DishController(DishRepository repository, RestaurantRepository restaurantRepository){
+    DishController(DishRepository repository){
         this.repository=repository;
-        this.restaurantRepository = restaurantRepository;
     }
-
-    @GetMapping("{decisionId}/dishes/")
+   /* @GetMapping("all")
     @Secured({"ROLE_USER"})
-    public ModelAndView getdisheswithRestaurantID(@PathVariable @NotNull @DecimalMin("0") Long decisionId){
-        List<Dish> arrayList = repository.findByidRestaurant(decisionId);
-// eror with find by id restaurant
+    public ModelAndView allboys(){
+        List<Dish> arrayList = repository.findAll();
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("Dishes",arrayList);
+        return modelAndView;}*/
+
+
+    @GetMapping("dishes")
+    @Secured({"ROLE_USER"})
+    public ModelAndView getdisheswithRestaurantID(){//@PathVariable @NotNull @DecimalMin("0") Long decisionId){
+        List<Dish> arrayList = repository.findByid_restaurant();
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("dishes",arrayList);
         return modelAndView;}
 
 

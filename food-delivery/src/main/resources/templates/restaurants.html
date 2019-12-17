@@ -91,7 +91,7 @@ li.dropdown {
         <img th:src="${restaurant.getPhotoLink()}" class="card-img-top">
         <div class="card-body">
             <h5 class="card-title" >  <span th:text="'Restaurant: ' + ${restaurant.getRestaurantName()}"></span></h5>
-            <p class="card-text"> <span th:text="'Restaurant: ' + ${restaurant.getDescription()}"></span></p>
+            <p class="card-text"> <span th:text="${restaurant.getDescription()}"></span></p>
             <a href="#" class="btn btn-primary">Go to Restaurant Dishes</a>
         </div>
     </div>
