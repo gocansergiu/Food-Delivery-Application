@@ -3,6 +3,7 @@ package com.internship.accesa.fooddelivery.config;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
 public class OAuth2Configuration extends WebSecurityConfigurerAdapter {
@@ -20,7 +21,10 @@ public class OAuth2Configuration extends WebSecurityConfigurerAdapter {
                 .oauth2Login()
                 .and()
                 .logout()
-                .logoutSuccessUrl("/");
+                .logoutUrl("/perform_logout")
+                .and()
+                .csrf()
+                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
     }
 
 }
