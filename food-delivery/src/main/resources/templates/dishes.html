@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" lang="en">
+<head>
+    <title>Dishes</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link th:href="@{restaurants.css}" rel="stylesheet"/>
+    <link th:href="@{menubar.css}" rel="stylesheet"/>
+</head>
+
+<style>
+#nav {
+    z-index: 9999;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+</head>
+<body>
+<ul>
+    <li><a href="/index">Home</a></li>
+    <li><a href="/restaurants">Restaurants</a></li>
+    <li><a href="/contact">Contact</a></li>
+    <li>
+        <form class="form-signin" method="get" action="/perform_logout">
+            <button class="btn btn-primary" type="submit">Log Out</button>
+        </form>
+    </li>
+
+
+</ul>
+<div class="container">
+    <p>
+    <h3>Dishes</h3>
+    </p>
+</div>
+<div class="container d-flex justify-content-center">
+
+    <div class="card-container">
+        <div class="card" style="width: 18rem;" th:each="dish: ${dishes}">
+
+            <div class="card-body">
+                <h5 class="card-title" >  <span th:text="'Dish: ' + ${dish.getName()}"></span></h5>
+                <p class="card-text"> <span th:text="'Descirption ' + ${dish.getDescription()}"></span></p>
+                <a href="#" class="btn btn-primary">Order</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

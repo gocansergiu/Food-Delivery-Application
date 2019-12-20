@@ -70,9 +70,12 @@
         </div>
 
 
-		
+
         <button type="submit"
           class="btn btn-primary block full-width m-b">Save
+        </button>
+
+        <button type="submit" onclick="redirectLogin()">Login
         </button>
 
       </form>
@@ -93,7 +96,11 @@
 
   
   <script src="//cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
-
+   <script>
+      function redirectLogin() {
+      window.location.assign("https://localhost:8081/auth/login");
+    }
+</script>
   <script th:src="@{js/fv.min.js}"></script>
   <script>
 		$(document).ready(function() {

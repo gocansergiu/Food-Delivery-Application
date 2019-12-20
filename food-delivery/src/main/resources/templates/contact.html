@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 50%;  /* The width is the width of the web page */
+       }
+    </style>
+</head>
+
+<style>
+#nav {
+    z-index: 9999;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+<body>
+<ul>
+    <li><a href="/index">Home</a></li>
+    <li><a href="/restaurants">Restaurants</a></li>
+    <li><a href="/contact">Contact</a></li>
+
+    <li>
+        <form class="form-signin" method="get" action="/perform_logout">
+            <button class="btn btn-primary" type="submit">Log Out</button>
+        </form>
+    </li>
+
+</ul>
+
+
+<div>
+    <h3>Contact</h3>
+    <p class="font-weight-bolder">Telephone:</p>
+    <p class="font-weight-normal">+4074900000</p>
+    <p class="font-weight-bolder">Accesa Cluj-Napoca</p>
+    <p class="font-weight-normal">Constanta 12, Platinia
+        400158 Cluj-Napoca, Romania</p>
+</div>
+
+
+<!--The div element for the map -->
+<div id="map"></div>
+<script>
+// Initialize and add the map
+function initMap() {
+  // The location of Accesa
+  var accesa = {lat: 46.776514, lng: 23.614373};
+  // The map, centered at Accesa
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 4, center: accesa});
+  // The marker, positioned at Accesa olympia
+  var marker = new google.maps.Marker({position: accesa, map: map});
+}
+    </script>
+
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbRTO-F_hm-cti0KT_GdfKiW49EVzvQWA&callback=initMap">
+</script>
+
