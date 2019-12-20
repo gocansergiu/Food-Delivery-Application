@@ -3,9 +3,9 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-    <changeSet id="20191121000001" author="daniel.hodrea" >
+    <changeSet id="20191121001001" author="daniel.hodrea" >
         <sql>
-            CREATE SEQUENCE sequence_generator
+            CREATE SEQUENCE IF NOT EXISTS sequence_generator
             START WITH 1000
             INCREMENT BY 50
             NO MINVALUE
