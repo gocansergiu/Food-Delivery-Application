@@ -27,26 +27,12 @@ spring:
           custom-client:
             client-id: R2dpxQ3vPrtfgF72
             client-secret: fDw7Mpkk5czHNuSRtmhGmAGL42CaxQB9
-            client-name: Auth Server
-            scope: user_info
             provider: custom-provider
             redirect-uri: "{baseUrl}/login/oauth2/code/"
-            client-authentication-method: basic
             authorization-grant-type: authorization_code
-          facebook:
-            client-id: 571324953410235
-            client-secret: 62cbb3cba93a913cd9ca0d4b09555b9a
-            redirect-uri: "https://localhost:8443/login/oauth2/code/"
-            scope:
-              - email
-              - public_profile
         provider:
           custom-provider:
             token-uri: https://localhost:8081/auth/oauth/token
             authorization-uri: https://localhost:8081/auth/oauth/authorize
             user-info-uri: https://localhost:8081/auth/user/me
             user-name-attribute: name
-          facebook:
-            authorization-uri: https://www.facebook.com/v3.0/dialog/oauth
-            token-uri: https://graph.facebook.com/v3.0/oauth/access_token
-            user-info-uri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified

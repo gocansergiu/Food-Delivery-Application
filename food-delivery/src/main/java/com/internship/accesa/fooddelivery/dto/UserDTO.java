@@ -1,8 +1,5 @@
 package com.internship.accesa.fooddelivery.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.internship.accesa.fooddelivery.model.AuthProvider;
-
 public class UserDTO {
 
     private Long id;
@@ -13,12 +10,6 @@ public class UserDTO {
 
     private String email;
 
-    private Boolean emailVerified = false;
-
-    @JsonIgnore
-    private String password;
-
-    private AuthProvider provider;
 
     public Long getId() {
         return id;
@@ -71,41 +62,4 @@ public class UserDTO {
         this.email = email;
     }
 
-    public Boolean getEmailVerified() {
-        return emailVerified;
-    }
-    public UserDTO emailVerified(Boolean emailVerified){
-        this.emailVerified = emailVerified;
-        return this;
-    }
-
-    public void setEmailVerified(Boolean emailVerified) {
-        this.emailVerified = emailVerified;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public UserDTO password(String password){
-        this.password = password;
-        return this;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public AuthProvider getProvider() {
-        return provider;
-    }
-
-    public UserDTO provider(AuthProvider provider){
-        this.provider = provider;
-        return this;
-    }
-
-    public void setProvider(AuthProvider provider) {
-        this.provider = provider;
-    }
 }

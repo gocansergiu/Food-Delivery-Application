@@ -32,6 +32,16 @@
 
         <h4>User Login</h4>
 
+        <div class="social-login">
+            <a class="btn btn-block social-btn facebook" th:href="@{/login/facebook}">
+                <img th:src="@{img/fb-logo.png}" alt="Facebook" /> Log in with Facebook</a>
+            <a class="btn btn-block social-btn github" th:href="@{/login/github}">
+                <img th:src="@{img/github-logo.png}" alt="Github" /> Log in with Github</a>
+        </div>
+        <div class="or-separator">
+            <span class="or-text">OR</span>
+        </div>
+
         <form autocomplete="off" th:action="@{/login}"
               method="post" class="m-t" role="form"
               data-toggle="validator">
@@ -68,6 +78,7 @@
             </button>
 
         </form>
+        <span class="signup-link">New user? <a th:href="@{/register}">Sign up!</a></span>
         <p class="m-t">
         </p>
     </div>

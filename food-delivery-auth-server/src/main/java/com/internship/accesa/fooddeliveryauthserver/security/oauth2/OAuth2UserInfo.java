@@ -1,4 +1,4 @@
-package com.internship.accesa.fooddelivery.security.oauth2;
+package com.internship.accesa.fooddeliveryauthserver.security.oauth2;
 
 import java.util.Map;
 
